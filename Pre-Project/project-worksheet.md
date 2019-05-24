@@ -32,6 +32,9 @@ Class: Keep track of state and current OBJ in App, Search
 
 #### PostMVP 
 -VR curate feature
+-AI classification
+-AI creation
+
 
 | Component | Priority | Estimated Time | Actual Time |
 | --- | :---: |  :---: | :---: |
