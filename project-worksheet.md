@@ -18,12 +18,17 @@ Art App - an AApp
 Art curation site. Acces to art from met api. Ability to search for art by style, movement, time period, artist, artwork and save your favorites. Add these pieces to an
 exhibit see how they work together. 
 
+
+###Components
+Functional: Title, Art Component, Artist Component
+Class: Keep track of state and current OBJ in App, Search
+
 #### MVP 
 
 - Find and use external api 
 - Conditionally render data on page in a list
--Save your favorite data
--Display saved data to new page
+- Save your favorite data
+- Display saved data to new page
 
 #### PostMVP 
 -VR curate feature
@@ -34,11 +39,11 @@ exhibit see how they work together.
 | Search feature | H | 8hrs| NA |
 | List and Curate Feature | M | 8hrs | NA|
 | Styling| M | 8hrs | NA|
-| Total | H | 32hrs| 5NAhrs | 
+| Total | H | 32hrs| NA | 
 
 #### API
 https://metmuseum.github.io/
-App
+
 ## Additional Libraries
  
 | Library | What it Does | 
