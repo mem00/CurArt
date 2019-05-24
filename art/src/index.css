@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  text-align: center;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -7,7 +8,24 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+header{
+  padding-top: 30px;
+  background-color: lightblue;
+}
+
+li{
+  list-style-type: none;
+  display: inline-block;
+  margin: 10px;
+}
+
+img{
+  width: 30%;
+  height: 30%;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
