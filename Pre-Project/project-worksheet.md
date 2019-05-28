@@ -6,9 +6,10 @@ Art App - an AApp
 |  Day | Deliverable | Status
 |---|---| ---|
 |Day 1| Project Description | Complete
-|Day 2| Wireframes / Priority Matrix / Functional Components | Incomplete
-|Day 3| Populate site with info and basic styling | Incomplete
-|Day 4| Search Feature and link artists and artwork | Incomplete
+|Day 2| Wireframes / Priority Matrix / Functional Components | Complete
+|Day 3| Populate site with info and basic styling | Complete
+|Day 3 pt 2| Advanced styling with material design and favorite feature | Incomplete
+|Day 4| Search Feature | Incomplete
 |Day 5| Curate saved items to an exhibit  | Incomplete
 |Day 6| MVP | Incomplete
 |Day 7| Present | Incomplete
@@ -51,7 +52,7 @@ https://metmuseum.github.io/
  
 | Library | What it Does | 
 | --- | :---: |  
-| CSS Library | Not sure which one| 
+| Material Design | Styling| 
 
 
 
