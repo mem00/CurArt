@@ -82,7 +82,10 @@ class App extends Component {
   render() {
     let display
     let art = this.state.filter === "all" ? this.state.artwork : this.state.favorites
-    if(this.state.artwork && !this.state.currentArtwork.imageURL) {
+    if(art.length === 0) {
+      display = <div>Please add art</div>
+    }
+    else if(!this.state.currentArtwork.imageURL) {
       display = <ArtGallery artwork={art} setCurrentArtwork={this.setCurrentArtwork} />
     } else if(this.state.currentArtwork.imageURL){
       display = <ArtDetails piece={this.state.currentArtwork} setCurrentArtwork={this.setCurrentArtwork} handleFavoriteToggle={this.handleFavoriteToggle}/> 
