@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ArtPiece from './Components/ArtPiece'
+import ArtDetails from './Components/ArtDetails'
 import { Link, Route } from 'react-router-dom'
 import axios from 'axios'
 import './App.css';
@@ -48,11 +49,13 @@ class App extends Component {
   }
 
   render() {
-    let photos
-    if(this.state.artwork) {
-      photos = this.state.artwork.map((piece, index) => (
+    let display
+    if(this.state.artwork && !this.state.currentArtwork.imageURL) {
+      display = this.state.artwork.map((piece, index) => (
             <ArtPiece className= "piece" key={index}  piece={piece} setCurrentArtwork={this.setCurrentArtwork} />
         ))
+    } else if(this.state.currentArtwork.imageURL){
+      display = <ArtDetails piece={this.state.currentArtwork}/> 
     }
     return (
       <div>
@@ -64,7 +67,7 @@ class App extends Component {
           </ul>
         </header>
         <div className="art-container">      
-          {photos}
+          {display}
         </div>
         {/* <main>
         <Route exact path='/' render={('')}/>
