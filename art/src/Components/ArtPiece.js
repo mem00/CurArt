@@ -12,7 +12,6 @@ class ArtPiece extends Component{
     }
 
     render() {
-        console.log(this.props.piece)
         return(
             <div onClick={this.handleClick} className = "frame">
                 <img className= "art-image" src={this.props.piece.imageURL} alt="loading" />

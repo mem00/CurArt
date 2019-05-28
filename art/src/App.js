@@ -5,6 +5,7 @@ import { Link, Route } from 'react-router-dom'
 import axios from 'axios'
 import './App.css';
 import ArtGallery from './Components/ArtGallery';
+import { file } from '@babel/types';
 
 const URL = "https://collectionapi.metmuseum.org/public/collection/v1/search?q=isPublicDomain"
 const artworkURL = "https://collectionapi.metmuseum.org/public/collection/v1/objects"
@@ -16,10 +17,14 @@ class App extends Component {
     super(props)
     this.state =({
       artwork: [],
-      currentArtwork: {}
+      favorites: [],
+      favoriteCount: 0,
+      currentArtwork: {},
+      filter: "all"
     })
     this.setCurrentArtwork = this.setCurrentArtwork.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleFavoriteToggle = this.handleFavoriteToggle.bind(this);
   }
 
   async componentDidMount(){
@@ -33,7 +38,6 @@ class App extends Component {
       let response = await axios.get(artworkURL + "/" + ARTWORK_IDS[i])
       let data = response.data;
       let id = ARTWORK_IDS[i];
-      console.log(response.data)
       let artistName = data.artistDisplayName;
       let title = data.title;
       let imageURL = data.primaryImage;
@@ -50,24 +54,46 @@ class App extends Component {
     this.setState({currentArtwork});
   }
 
-  handleClick(){
+  handleFavoriteToggle(piece) {
+    let favorites = [...this.state.favorites];
+    let pieceIndex = favorites.indexOf(piece)
+    let favoriteCount = this.state.favoriteCount;
+    if(pieceIndex === -1) {
+      favorites.push(piece)
+      favoriteCount++;
+    }
+    else{
+      favorites.splice(pieceIndex, 1);
+      favoriteCount--;
+
+    }
+    this.setState({favorites, favoriteCount});
+  }
+
+  handleClick(event){
     this.setCurrentArtwork({});
+    if(event.currentTarget.innerHTML === "Home") {
+      this.setState({filter: "all"})
+    }else {
+      this.setState({filter: "favorites"})
+    }
   }
 
   render() {
     let display
+    let art = this.state.filter === "all" ? this.state.artwork : this.state.favorites
     if(this.state.artwork && !this.state.currentArtwork.imageURL) {
-      display = <ArtGallery artwork={this.state.artwork} setCurrentArtwork={this.setCurrentArtwork} />
+      display = <ArtGallery artwork={art} setCurrentArtwork={this.setCurrentArtwork} />
     } else if(this.state.currentArtwork.imageURL){
-      display = <ArtDetails piece={this.state.currentArtwork} setCurrentArtwork={this.setCurrentArtwork}/> 
+      display = <ArtDetails piece={this.state.currentArtwork} setCurrentArtwork={this.setCurrentArtwork} handleFavoriteToggle={this.handleFavoriteToggle}/> 
     }
     return (
       <div>
         <header>
           <h1>Art</h1>
           <ul>
-            <li onClick={this.handleClick}>Home</li>
-            <li ><Link to="/favorites">Favorites</Link></li>
+            <li onClick = {this.handleClick}>Home</li>
+            <li onClick = {this.handleClick}>Favorites {this.state.favoriteCount}</li>
           </ul>
         </header>
          
