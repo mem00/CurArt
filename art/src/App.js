@@ -16,6 +16,7 @@ class App extends Component {
       artwork: [],
       currentArtwork: {}
     })
+    this.setCurrentArtwork = this.setCurrentArtwork.bind(this);
   }
 
   async componentDidMount(){
@@ -39,15 +40,18 @@ class App extends Component {
 
       this.setState({artwork})
    }
- 
+  }
+
+  setCurrentArtwork(piece) {
+    let currentArtwork = piece;
+    this.setState({currentArtwork});
   }
 
   render() {
     let photos
     if(this.state.artwork) {
       photos = this.state.artwork.map((piece, index) => (
-            <ArtPiece className= "piece" key={index}  picture={piece.imageURL} />
-  
+            <ArtPiece className= "piece" key={index}  piece={piece} setCurrentArtwork={this.setCurrentArtwork} />
         ))
     }
     return (

@@ -1,12 +1,24 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-const ArtPiece = (props) => {
+class ArtPiece extends Component{
+    constructor(props){
+        super(props);
+        this.handleClick = this.handleClick.bind(this);
+    }
 
-    return(
-        <div className = "frame">
-            <img className= "art-image" src={props.picture} alt="loading" />
-        </div>
-    )
+    handleClick() {
+        // event.preventDefault();
+        this.props.setCurrentArtwork(this.props.piece);
+    }
+
+    render() {
+        console.log(this.props.piece)
+        return(
+            <div onClick={this.handleClick} className = "frame">
+                <img className= "art-image" src={this.props.piece.imageURL} alt="loading" />
+            </div>
+        )
+    }
 }
 
 export default ArtPiece
