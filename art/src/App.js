@@ -14,9 +14,7 @@ class App extends Component {
     super(props)
     this.state =({
       artwork: [],
-      currentArtwork: {},
-      imageURLs: [],
-      ids: []
+      currentArtwork: {}
     })
   }
 
@@ -26,26 +24,29 @@ class App extends Component {
     //console.log(data[272]);
     //let response2 = await axios.get(artworkURL + "/" + data[0])
     //console.log(response2.data)
-    let imageURLs = [...this.state.imageURLs]
-    let ids = [...this.state.ids]
+    let artwork = [...this.state.artwork]
     for(let i = 0; i < ARTWORK_IDS.length; i++) {  
       let response = await axios.get(artworkURL + "/" + ARTWORK_IDS[i])
+      let data = response.data;
       let id = ARTWORK_IDS[i];
-      ids.push(id)
-      let imageURL = response.data.primaryImage;
-      if(imageURL) {
-        imageURLs.push(imageURL);
-      }
-      this.setState({imageURLs, ids})
+      console.log(response.data)
+      let artistName = data.artistDisplayName;
+      let title = data.title;
+      let imageURL = data.primaryImage;
+
+      let artPiece = {artistName: artistName, id: id, imageURL: imageURL, title: title }
+      artwork.push(artPiece)
+
+      this.setState({artwork})
    }
  
   }
 
   render() {
     let photos
-    if(this.state.imageURLs) {
-      photos = this.state.imageURLs.map((picture, index) => (
-            <ArtPiece className= "piece" key={index}  picture={picture} />
+    if(this.state.artwork) {
+      photos = this.state.artwork.map((piece, index) => (
+            <ArtPiece className= "piece" key={index}  picture={piece.imageURL} />
   
         ))
     }
