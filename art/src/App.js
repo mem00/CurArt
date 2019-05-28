@@ -54,8 +54,9 @@ class App extends Component {
       display = this.state.artwork.map((piece, index) => (
             <ArtPiece className= "piece" key={index}  piece={piece} setCurrentArtwork={this.setCurrentArtwork} />
         ))
+        display =<div className="art-container">{display}</div>
     } else if(this.state.currentArtwork.imageURL){
-      display = <ArtDetails piece={this.state.currentArtwork}/> 
+      display = <ArtDetails piece={this.state.currentArtwork} setCurrentArtwork={this.setCurrentArtwork}/> 
     }
     return (
       <div>
@@ -66,9 +67,9 @@ class App extends Component {
             <li><Link to="/favorites">Favorites</Link></li>
           </ul>
         </header>
-        <div className="art-container">      
+         
           {display}
-        </div>
+       
         {/* <main>
         <Route exact path='/' render={('')}/>
         <Route path='/art' render={('')}/>
