@@ -4,6 +4,7 @@ import ArtDetails from './Components/ArtDetails'
 import { Link, Route } from 'react-router-dom'
 import axios from 'axios'
 import './App.css';
+import ArtGallery from './Components/ArtGallery';
 
 const URL = "https://collectionapi.metmuseum.org/public/collection/v1/search?q=isPublicDomain"
 const artworkURL = "https://collectionapi.metmuseum.org/public/collection/v1/objects"
@@ -51,10 +52,7 @@ class App extends Component {
   render() {
     let display
     if(this.state.artwork && !this.state.currentArtwork.imageURL) {
-      display = this.state.artwork.map((piece, index) => (
-            <ArtPiece className= "piece" key={index}  piece={piece} setCurrentArtwork={this.setCurrentArtwork} />
-        ))
-        display =<div className="art-container">{display}</div>
+      display = <ArtGallery artwork={this.state.artwork} setCurrentArtwork={this.setCurrentArtwork} />
     } else if(this.state.currentArtwork.imageURL){
       display = <ArtDetails piece={this.state.currentArtwork} setCurrentArtwork={this.setCurrentArtwork}/> 
     }
@@ -70,13 +68,13 @@ class App extends Component {
          
           {display}
        
-        {/* <main>
-        <Route exact path='/' render={('')}/>
-        <Route path='/art' render={('')}/>
-        <Route path='/artist' render={('')}/>
-
-
-        </main> */}
+         <main>
+          {/* <Route exact path='/' render={()=>
+           this.setCurrentArtwork({})
+          }/> */}
+          {/* <Route path='/art' render={('')}/>
+          <Route path='/artist' render={('')}/> */}
+        </main>  
       </div>
     )
   }
