@@ -19,6 +19,7 @@ class App extends Component {
       currentArtwork: {}
     })
     this.setCurrentArtwork = this.setCurrentArtwork.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   async componentDidMount(){
@@ -49,6 +50,10 @@ class App extends Component {
     this.setState({currentArtwork});
   }
 
+  handleClick(){
+    this.setCurrentArtwork({});
+  }
+
   render() {
     let display
     if(this.state.artwork && !this.state.currentArtwork.imageURL) {
@@ -61,8 +66,8 @@ class App extends Component {
         <header>
           <h1>Art</h1>
           <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/favorites">Favorites</Link></li>
+            <li onClick={this.handleClick}>Home</li>
+            <li ><Link to="/favorites">Favorites</Link></li>
           </ul>
         </header>
          
