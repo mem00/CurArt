@@ -56,7 +56,7 @@ class App extends Component {
 
   handleFavoriteToggle(piece) {
     let favorites = [...this.state.favorites];
-    let pieceIndex = favorites.indexOf(piece)
+    let pieceIndex = favorites.indexOf(piece);
     let favoriteCount = this.state.favoriteCount;
     if(pieceIndex === -1) {
       favorites.push(piece)
@@ -65,7 +65,6 @@ class App extends Component {
     else{
       favorites.splice(pieceIndex, 1);
       favoriteCount--;
-
     }
     this.setState({favorites, favoriteCount});
   }
@@ -86,9 +85,9 @@ class App extends Component {
       display = <div>Please add art</div>
     }
     else if(!this.state.currentArtwork.imageURL) {
-      display = <ArtGallery artwork={art} setCurrentArtwork={this.setCurrentArtwork} handleFavoriteToggle={this.handleFavoriteToggle}/>
+      display = <ArtGallery artwork={art} setCurrentArtwork={this.setCurrentArtwork} handleFavoriteToggle={this.handleFavoriteToggle} favorites={this.state.favorites}/>
     } else if(this.state.currentArtwork.imageURL){
-      display = <ArtDetails piece={this.state.currentArtwork} setCurrentArtwork={this.setCurrentArtwork} handleFavoriteToggle={this.handleFavoriteToggle}/> 
+      display = <ArtDetails piece={this.state.currentArtwork} setCurrentArtwork={this.setCurrentArtwork} handleFavoriteToggle={this.handleFavoriteToggle} favorites={this.state.favorites}/> 
     }
     return (
       <div>
