@@ -86,7 +86,7 @@ class App extends Component {
       display = <div>Please add art</div>
     }
     else if(!this.state.currentArtwork.imageURL) {
-      display = <ArtGallery artwork={art} setCurrentArtwork={this.setCurrentArtwork} />
+      display = <ArtGallery artwork={art} setCurrentArtwork={this.setCurrentArtwork} handleFavoriteToggle={this.handleFavoriteToggle}/>
     } else if(this.state.currentArtwork.imageURL){
       display = <ArtDetails piece={this.state.currentArtwork} setCurrentArtwork={this.setCurrentArtwork} handleFavoriteToggle={this.handleFavoriteToggle}/> 
     }
