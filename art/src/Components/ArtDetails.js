@@ -19,10 +19,11 @@ class ArtDetails extends Component {
     render() {
         return(
             <div>
+
                 <h1>{this.props.piece.title}</h1>
-                <img className="art-image" src={this.props.piece.imageURL} alt = 'loading' />
-                <button onClick={this.handleClick}>Back</button>
-                <button onClick={this.addToFavorites}>Add to Favorites</button>
+                <i onClick={this.handleClick} class="material-icons">arrow_back</i>
+                <i onClick={this.addToFavorites} class="material-icons">add_circle_outline</i>   
+                <img className="art-image" src={this.props.piece.imageURL} alt = 'loading' /> 
             </div>
 
         )
