@@ -9,7 +9,7 @@ Art App - an AApp
 |Day 2| Wireframes / Priority Matrix / Functional Components | Complete
 |Day 3| Populate site with info and basic styling, Favorites| Complete
 |Day 3 pt 2| Advanced styling with material design and favorite feature | In progress
-|Day 4| Search Feature | Incomplete
+|Day 4| Search Feature today| Incomplete
 |Day 5| Curate saved items to an exhibit  | Incomplete
 |Day 6| MVP | Incomplete
 |Day 7| Present | Incomplete
