@@ -5,7 +5,7 @@ import { Link, Route } from 'react-router-dom'
 import axios from 'axios'
 import './App.css';
 import ArtGallery from './Components/ArtGallery';
-import { file } from '@babel/types';
+
 
 const URL = "https://collectionapi.metmuseum.org/public/collection/v1/search?q=isPublicDomain"
 const artworkURL = "https://collectionapi.metmuseum.org/public/collection/v1/objects"
@@ -97,6 +97,7 @@ class App extends Component {
           <ul>
             <li onClick = {this.handleClick}>Home</li>
             <li onClick = {this.handleClick}>Favorites {this.state.favoriteCount}</li>
+            <li><i class="material-icons">face</i></li>
           </ul>
         </header>
          
