@@ -34,9 +34,26 @@ code {
 }
 
 .frame{
+  position: relative;
+  display: inline-block;
   border: 1px solid black;
   width: 1fr;
   height: 1fr;
+}
+
+.icon{
+  position:absolute;
+  top: 90%;
+  left: 90%;
+
+  color:white;
+}
+
+.icon-favorite{
+  position:absolute;
+  top: 90%;
+  left: 85%;
+  color:white;
 }
 
 .art-image{ 

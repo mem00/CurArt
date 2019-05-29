@@ -28,8 +28,8 @@ class App extends Component {
   }
 
   async componentDidMount(){
-    let response = await axios.get(URL);
-    let data = response.data.objectIDs
+    // let response = await axios.get(URL);
+    // let data = response.data.objectIDs
     //console.log(data[272]);
     //let response2 = await axios.get(artworkURL + "/" + data[0])
     //console.log(response2.data)
