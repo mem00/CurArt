@@ -42,9 +42,8 @@ class App extends Component {
       let title = data.title;
       let imageURL = data.primaryImage;
 
-      let artPiece = {artistName: artistName, id: id, imageURL: imageURL, title: title }
+      let artPiece = {artistName: artistName, id: id, imageURL: imageURL, title: title, favorite: false }
       artwork.push(artPiece)
-
       this.setState({artwork})
    }
   }
@@ -92,8 +91,8 @@ class App extends Component {
     return (
       <div>
         <header>
-          <h1>Art</h1>
-          <ul>
+          <h1 className="title">Art</h1>
+          <ul className = "nav">
             <li onClick = {this.handleClick}>Home</li>
             <li onClick = {this.handleClick}>Favorites {this.state.favoriteCount}</li>
             <li><i class="material-icons">face</i></li>

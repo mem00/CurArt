@@ -11,14 +11,6 @@ class ArtDetails extends Component {
         this.addToFavorites = this.addToFavorites.bind(this);
     }
 
-    componentDidMount() {
-        let pieceIndex = this.props.favorites.indexOf(this.props.piece);
-        if(pieceIndex !== -1) {
-            let favorite = !this.state.favorite
-            this.setState({favorite})
-        }
-    }
-
     handleClick() {
         this.props.setCurrentArtwork({})   
     }
@@ -30,7 +22,8 @@ class ArtDetails extends Component {
     }
 
     render() {
-        let favIcon = this.state.favorite ? "remove_circle_outline" : "add_circle_outline"
+        let pieceIndex = this.props.favorites.indexOf(this.props.piece);
+        let favIcon = pieceIndex === -1 ? "add_circle" : "remove_circle" 
         return(
             <div>
 
