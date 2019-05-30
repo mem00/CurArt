@@ -11,7 +11,6 @@ class ArtPiece extends Component{
     }
 
     handleInfo() {
-        // event.preventDefault();
         this.props.setCurrentArtwork(this.props.piece);
     }
 

@@ -7,10 +7,7 @@ import axios from 'axios';
 import './App.css';
 
 
-const URL = "https://collectionapi.metmuseum.org/public/collection/v1/search?q=isPublicDomain"
 const artworkURL = "https://collectionapi.metmuseum.org/public/collection/v1/objects"
-const ARTWORK_IDS = [437881, 435885, 438023, 435914, 436546, 436580, 437164, 337699, 436063, 436545, 437180, 436095, 436541,
-                    437877, 21126, 438954, 437925, 11742, 435852, 437986, 459088, 441352, 436918, 11602, 438417, 437869, 436573, 437827]
 const NUMBER_OF_PIECES = 15;
 
 
@@ -46,12 +43,19 @@ class App extends Component {
       let randomIndex = Math.floor(Math.random() * ArtworkIDS.length)
       let response = await axios.get(artworkURL + "/" + ArtworkIDS[randomIndex])
       let data = response.data;
-      let id = ArtworkIDS[randomIndex];
+      console.log(data)
+      let id = data.objectID
       let artistName = data.artistDisplayName;
+      let artistDisplayBio = data.artistDisplayBio;
       let title = data.title;
-      let imageURL = data.primaryImage;
-
-      let artPiece = {artistName: artistName, id: id, imageURL: imageURL, title: title, favorite: false }
+      let imageURL = data.primaryImageSmall;
+      let department = data.department;
+      let dimensions = data.dimensions;
+      let medium = data.medium;
+      let objectDate = data.objectDate;
+      let repository = data.repository;
+      let artPiece = {id: id, artistName: artistName, artistDisplayBio: artistDisplayBio,  imageURL: imageURL, title: title, favorite: false, 
+      department : department, dimensions: dimensions, medium: medium, objectDate: objectDate, repository:repository}
       artwork.push(artPiece)
       let artworkFiltered = [...artwork]
       this.setState({artwork, artworkFiltered})
@@ -125,8 +129,8 @@ class App extends Component {
             <li onClick = {this.handleClick}>Favorites {this.state.favoriteCount}</li>
             <li><i className="material-icons">face</i></li>
           </ul>
-          <button onClick={this.getNewArt}>Get New Art</button>
           <SearchBar setSearch={this.setSearch} />
+          <button onClick={this.getNewArt}>Get New Art</button>
         </header>
          
           {display} 
