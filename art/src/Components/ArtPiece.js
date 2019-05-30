@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Popup from "./Popup"
 
 class ArtPiece extends Component{
     constructor(props){
@@ -31,6 +32,8 @@ class ArtPiece extends Component{
                 <h6 className="title-under">{this.props.piece.title}</h6>
                 <i onClick={this.handleFavorite} className="material-icons icon ">{favIcon}</i>
                 <i onClick={this.handleInfo} className="material-icons icon">info</i>
+
+                <Popup piece={this.props.piece} favorites={this.props.favorites} handleFavoriteToggle={this.props.handleFavoriteToggle}/>
             </div>
         )
     }
