@@ -21,8 +21,7 @@ class Popup extends Component {
         this.setState({showModal});
     }
     handleCloseModal(){
-        let showModal = false;
-        this.setState({showModal});
+        this.setState({showModal : false});
     }
 
     toggleFavorite(){
@@ -40,7 +39,6 @@ class Popup extends Component {
                 <i onClick={this.handleOpenModal} className="material-icons icon">info</i>
                 <Modal
                 	isOpen={this.state.showModal}
-					contentLabel="onRequestClose Example"
                     onRequestClose={this.handleCloseModal} 
 				>
                     

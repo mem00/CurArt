@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ArtDetails from './Components/ArtDetails';
+// import ArtDetails from './Components/ArtDetails';
 import ArtGallery from './Components/ArtGallery';
 import SearchBar from './Components/SearchBar';
 import ArtworkIDS from './ArtworkIDs'
@@ -21,11 +21,10 @@ class App extends Component {
       favorites: [],
       favoritesFiltered: [],
       favoriteCount: 0,
-      currentArtwork: {},
       filter: "all",
       search: ''
     })
-    this.setCurrentArtwork = this.setCurrentArtwork.bind(this);
+
     this.handleClick = this.handleClick.bind(this);
     this.handleFavoriteToggle = this.handleFavoriteToggle.bind(this);
     this.setSearch = this.setSearch.bind(this);
@@ -63,10 +62,6 @@ class App extends Component {
 
 
   }
-  setCurrentArtwork(piece) {
-    let currentArtwork = piece;
-    this.setState({currentArtwork});
-  }
 
   handleFavoriteToggle(piece) {
     let favorites = [...this.state.favorites];
@@ -101,7 +96,6 @@ class App extends Component {
   }
 
   handleClick(event){
-    this.setCurrentArtwork({});
     if(event.currentTarget.innerHTML === "Home") {
       this.setState({filter: "all"})
     }else {
@@ -115,11 +109,11 @@ class App extends Component {
     if(art.length === 0) {
       display = <div>Please add art</div>
     }
-    else if(!this.state.currentArtwork.imageURL) {
-      display = <ArtGallery artwork={art} setCurrentArtwork={this.setCurrentArtwork} handleFavoriteToggle={this.handleFavoriteToggle} favorites={this.state.favorites}/>
-    } else if(this.state.currentArtwork.imageURL){
-      display = <ArtDetails piece={this.state.currentArtwork} setCurrentArtwork={this.setCurrentArtwork} handleFavoriteToggle={this.handleFavoriteToggle} favorites={this.state.favorites}/> 
-    }
+    else  {
+      display = <ArtGallery artwork={art}  handleFavoriteToggle={this.handleFavoriteToggle} favorites={this.state.favorites}/>
+    } 
+
+    let search = this.state.artwork.length === 15 ? <SearchBar setSearch={this.setSearch} /> : <div></div>
     return (
       <div>
         <header>
@@ -129,10 +123,9 @@ class App extends Component {
             <li onClick = {this.handleClick}>Favorites {this.state.favoriteCount}</li>
             <li><i className="material-icons">face</i></li>
           </ul>
-          <SearchBar setSearch={this.setSearch} />
+          {search}
           <button onClick={this.getNewArt}>Get New Art</button>
-        </header>
-         
+        </header>  
           {display} 
       </div>
     )

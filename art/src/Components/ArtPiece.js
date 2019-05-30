@@ -30,10 +30,10 @@ class ArtPiece extends Component{
                     <img className= "art-image" src={this.props.piece.imageURL} alt="loading" />  
                 </div>
                 <h6 className="title-under">{this.props.piece.title}</h6>
-                <i onClick={this.handleFavorite} className="material-icons icon ">{favIcon}</i>
-                <i onClick={this.handleInfo} className="material-icons icon">info</i>
-
-                <Popup piece={this.props.piece} favorites={this.props.favorites} handleFavoriteToggle={this.props.handleFavoriteToggle}/>
+                <div className = "buttons">
+                    <i onClick={this.handleFavorite} className="material-icons icon ">{favIcon}</i>
+                    <Popup piece={this.props.piece} favorites={this.props.favorites} handleFavoriteToggle={this.props.handleFavoriteToggle}/>
+                </div>
             </div>
         )
     }
