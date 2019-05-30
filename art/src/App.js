@@ -21,6 +21,7 @@ class App extends Component {
       artwork: [],
       artworkFiltered: [],
       favorites: [],
+      favoritesFiltered: [],
       favoriteCount: 0,
       currentArtwork: {},
       filter: "all",
@@ -71,17 +72,23 @@ class App extends Component {
       favorites.splice(pieceIndex, 1);
       favoriteCount--;
     }
-    this.setState({favorites, favoriteCount});
+    let favoritesFiltered = [...favorites]
+    this.setState({favorites, favoritesFiltered, favoriteCount});
   }
 
   setSearch(search) {
     let artworkUnfiltered = [...this.state.artwork]
+    let favoritesUnfiltered = [...this.state.favorites]
     const artworkFiltered= artworkUnfiltered.filter((art)=>{
       return(art.title.toLowerCase().includes(search.toLowerCase()))
     })
 
+    const favoritesFiltered= favoritesUnfiltered.filter((art)=>{
+      return(art.title.toLowerCase().includes(search.toLowerCase()))
+    })
+
     this.setState({
-      artworkFiltered, search
+      artworkFiltered, favoritesFiltered, search
     })
   }
 
@@ -96,7 +103,7 @@ class App extends Component {
 
   render() {
     let display
-    let art = this.state.filter === "all" ? this.state.artworkFiltered : this.state.favorites
+    let art = this.state.filter === "all" ? this.state.artworkFiltered : this.state.favoritesFiltered
     if(art.length === 0) {
       display = <div>Please add art</div>
     }
