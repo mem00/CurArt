@@ -1,30 +1,35 @@
 import React, { Component } from 'react';
-import ArtPiece from './Components/ArtPiece'
 import ArtDetails from './Components/ArtDetails'
-import { Link, Route } from 'react-router-dom'
+import ArtGallery from './Components/ArtGallery';
+import SearchBar from './Components/SearchBar'
 import axios from 'axios'
 import './App.css';
-import ArtGallery from './Components/ArtGallery';
 
 
 const URL = "https://collectionapi.metmuseum.org/public/collection/v1/search?q=isPublicDomain"
 const artworkURL = "https://collectionapi.metmuseum.org/public/collection/v1/objects"
 const ARTWORK_IDS = [437881, 435885, 438023, 435914, 436546, 436580, 437164, 337699, 436063, 436545, 437180, 436095, 436541,
                     437877, 21126, 438954, 437925, 11742, 435852, 437986, 459088, 441352, 436918, 11602, 438417, 437869, 436573, 437827]
+const NUMBER_OF_PIECES = 15;
+
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state =({
+      artIds: [],
       artwork: [],
+      artworkFiltered: [],
       favorites: [],
       favoriteCount: 0,
       currentArtwork: {},
-      filter: "all"
+      filter: "all",
+      search: ''
     })
     this.setCurrentArtwork = this.setCurrentArtwork.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleFavoriteToggle = this.handleFavoriteToggle.bind(this);
+    this.setSearch = this.setSearch.bind(this);
   }
 
   async componentDidMount(){
@@ -44,7 +49,8 @@ class App extends Component {
 
       let artPiece = {artistName: artistName, id: id, imageURL: imageURL, title: title, favorite: false }
       artwork.push(artPiece)
-      this.setState({artwork})
+      let artworkFiltered = [...artwork]
+      this.setState({artwork, artworkFiltered})
    }
   }
 
@@ -68,6 +74,17 @@ class App extends Component {
     this.setState({favorites, favoriteCount});
   }
 
+  setSearch(search) {
+    let artworkUnfiltered = [...this.state.artwork]
+    const artworkFiltered= artworkUnfiltered.filter((art)=>{
+      return(art.title.toLowerCase().includes(search.toLowerCase()))
+    })
+
+    this.setState({
+      artworkFiltered, search
+    })
+  }
+
   handleClick(event){
     this.setCurrentArtwork({});
     if(event.currentTarget.innerHTML === "Home") {
@@ -79,7 +96,7 @@ class App extends Component {
 
   render() {
     let display
-    let art = this.state.filter === "all" ? this.state.artwork : this.state.favorites
+    let art = this.state.filter === "all" ? this.state.artworkFiltered : this.state.favorites
     if(art.length === 0) {
       display = <div>Please add art</div>
     }
@@ -95,8 +112,9 @@ class App extends Component {
           <ul className = "nav">
             <li onClick = {this.handleClick}>Home</li>
             <li onClick = {this.handleClick}>Favorites {this.state.favoriteCount}</li>
-            <li><i class="material-icons">face</i></li>
+            <li><i className="material-icons">face</i></li>
           </ul>
+        <SearchBar setSearch={this.setSearch} />
         </header>
          
           {display}

@@ -31,7 +31,7 @@ class ArtPiece extends Component{
                 </div>
                 <h6 className="title-under">{this.props.piece.title}</h6>
                 <i onClick={this.handleFavorite} className="material-icons icon ">{favIcon}</i>
-                <i onClick={this.handleInfo} class="material-icons icon">info</i>
+                <i onClick={this.handleInfo} className="material-icons icon">info</i>
             </div>
         )
     }
