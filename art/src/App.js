@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-// import ArtDetails from './Components/ArtDetails';
 import ArtGallery from './Components/ArtGallery';
 import SearchBar from './Components/SearchBar';
 import ArtworkIDS from './ArtworkIDs'
 import axios from 'axios';
 import './App.css';
-
 
 const artworkURL = "https://collectionapi.metmuseum.org/public/collection/v1/objects"
 const NUMBER_OF_PIECES = 15;
@@ -42,8 +40,7 @@ class App extends Component {
       let randomIndex = Math.floor(Math.random() * ArtworkIDS.length)
       let response = await axios.get(artworkURL + "/" + ArtworkIDS[randomIndex])
       let data = response.data;
-      console.log(data)
-      let id = data.objectID
+      let id = data.objectID;
       let artistName = data.artistDisplayName;
       let artistDisplayBio = data.artistDisplayBio;
       let title = data.title;
@@ -59,8 +56,6 @@ class App extends Component {
       let artworkFiltered = [...artwork]
       this.setState({artwork, artworkFiltered})
     }
-
-
   }
 
   handleFavoriteToggle(piece) {
@@ -104,6 +99,12 @@ class App extends Component {
   }
 
   render() {
+    const styleHome = {
+      color: this.state.filter==="all" ? "yellow" : "white"
+    }
+    const styleFavorites = {
+      color: this.state.filter==="favorites" ? "yellow" : "white"
+    }
     let display
     let art = this.state.filter === "all" ? this.state.artworkFiltered : this.state.favoritesFiltered
     if(art.length === 0) {
@@ -119,8 +120,8 @@ class App extends Component {
         <header>
           <h1 className="title">Art</h1>
           <ul className = "nav">
-            <li onClick = {this.handleClick}>Home</li>
-            <li onClick = {this.handleClick}>Favorites {this.state.favoriteCount}</li>
+            <li onClick = {this.handleClick} style={styleHome}>Home</li>
+            <li onClick = {this.handleClick} style={styleFavorites}>Favorites {this.state.favoriteCount}</li>
             <li><i className="material-icons">face</i></li>
           </ul>
           {search}

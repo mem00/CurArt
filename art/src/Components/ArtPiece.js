@@ -32,7 +32,7 @@ class ArtPiece extends Component{
                 <h6 className="title-under">{this.props.piece.title}</h6>
                 
                 <div className = "buttons">
-                    <i onClick={this.handleFavorite} className="material-icons icon ">{favIcon}</i>
+                    <i onClick={this.handleFavorite} className="material-icons icon">{favIcon}</i>
                     <Popup piece={this.props.piece} favorites={this.props.favorites} handleFavoriteToggle={this.props.handleFavoriteToggle}/>
                 </div>
                 </div>

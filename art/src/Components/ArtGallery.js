@@ -12,8 +12,6 @@ class ArtGallery extends Component{
             </div>
         )
     }
-
-
 }
 
 export default ArtGallery;

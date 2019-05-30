@@ -45,8 +45,9 @@ class Popup extends Component {
                     
                 <h1>{this.props.piece.title}</h1>
                 <h3>{this.props.piece.artistName}</h3>
+                <h3>{this.props.piece.id}</h3>
                 
-                <i onClick={this.handlCloseModal} className="material-icons">arrow_back</i> 
+                <i onClick={this.handleCloseModal} className="material-icons">arrow_back</i> 
                 <i onClick={this.toggleFavorite} className="material-icons">{favIcon}</i>   
                 <img className="art-image" src={this.props.piece.imageURL} alt = 'loading' /> 
                 <h6>{this.props.piece.artistName}</h6>
