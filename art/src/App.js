@@ -121,7 +121,7 @@ class App extends Component {
           <h1 className="title">Art</h1>
           <ul className = "nav">
             <li onClick = {this.handleClick} style={styleHome}>Home</li>
-            <li onClick = {this.handleClick} style={styleFavorites}>Favorites {this.state.favoriteCount}</li>
+            <li onClick = {this.handleClick} style={styleFavorites}>Favorites<span className="section-count">{this.state.favoriteCount}</span></li>
             <li><i className="material-icons">face</i></li>
           </ul>
           {search}
