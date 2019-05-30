@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import ArtDetails from './Components/ArtDetails'
+import ArtDetails from './Components/ArtDetails';
 import ArtGallery from './Components/ArtGallery';
-import SearchBar from './Components/SearchBar'
-import axios from 'axios'
+import SearchBar from './Components/SearchBar';
+import ArtworkIDS from './ArtworkIDs'
+import axios from 'axios';
 import './App.css';
 
 
@@ -31,19 +32,21 @@ class App extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleFavoriteToggle = this.handleFavoriteToggle.bind(this);
     this.setSearch = this.setSearch.bind(this);
+    this.getNewArt = this.getNewArt.bind(this);
   }
 
   async componentDidMount(){
-    // let response = await axios.get(URL);
-    // let data = response.data.objectIDs
-    //console.log(data[272]);
-    //let response2 = await axios.get(artworkURL + "/" + data[0])
-    //console.log(response2.data)
+    this.getNewArt();
+  }
+
+ async getNewArt() {
     let artwork = [...this.state.artwork]
-    for(let i = 0; i < ARTWORK_IDS.length; i++) {  
-      let response = await axios.get(artworkURL + "/" + ARTWORK_IDS[i])
+    artwork = []
+    for(let i = 0; i < NUMBER_OF_PIECES; i++) {  
+      let randomIndex = Math.floor(Math.random() * ArtworkIDS.length)
+      let response = await axios.get(artworkURL + "/" + ArtworkIDS[randomIndex])
       let data = response.data;
-      let id = ARTWORK_IDS[i];
+      let id = ArtworkIDS[randomIndex];
       let artistName = data.artistDisplayName;
       let title = data.title;
       let imageURL = data.primaryImage;
@@ -52,9 +55,10 @@ class App extends Component {
       artwork.push(artPiece)
       let artworkFiltered = [...artwork]
       this.setState({artwork, artworkFiltered})
-   }
-  }
+    }
 
+
+  }
   setCurrentArtwork(piece) {
     let currentArtwork = piece;
     this.setState({currentArtwork});
@@ -121,18 +125,11 @@ class App extends Component {
             <li onClick = {this.handleClick}>Favorites {this.state.favoriteCount}</li>
             <li><i className="material-icons">face</i></li>
           </ul>
-        <SearchBar setSearch={this.setSearch} />
+          <button onClick={this.getNewArt}>Get New Art</button>
+          <SearchBar setSearch={this.setSearch} />
         </header>
          
-          {display}
-       
-         <main>
-          {/* <Route exact path='/' render={()=>
-           this.setCurrentArtwork({})
-          }/> */}
-          {/* <Route path='/art' render={('')}/>
-          <Route path='/artist' render={('')}/> */}
-        </main>  
+          {display} 
       </div>
     )
   }
