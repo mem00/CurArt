@@ -9,7 +9,7 @@ Art App - an AApp
 |Day 2| Wireframes / Priority Matrix / Functional Components | Complete
 |Day 3| Populate site with info and basic styling, Favorites| Complete
 |Day 4| Advanced styling with material design and favorite feature| Complete
-|Day 5| Search feature and MVP | Incomplete
+|Day 5| Search feature and MVP | Complete
 |Day 7| Present | Incomplete
 
 
@@ -39,10 +39,10 @@ Class: Keep track of state and current OBJ in App, Search
 | Component | Priority | Estimated Time | Actual Time |
 | --- | :---: |  :---: | :---: |
 | Populate site with data | H | 8hrs| 4hrs |
-| Search feature | H | 8hrs| NA |
-| List and Curate Feature | M | 8hrs | 2hrs|
-| Styling| M | 8hrs | 5hrs|
-| Total | H | 32hrs| 11hrs| 
+| Search feature | H | 8hrs| 2hrs |
+| List and Curate Feature | M | 8hrs | 3hrs|
+| Styling| M | 8hrs | 8hrs|
+| Total | H | 32hrs| 17hrs| 
 
 #### API
 https://metmuseum.github.io/
