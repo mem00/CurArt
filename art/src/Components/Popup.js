@@ -12,7 +12,7 @@ class Popup extends Component {
         })
 
         this.handleOpenModal = this.handleOpenModal.bind(this);
-        this.handlCloseModal = this.handleCloseModal.bind(this);
+        this.handleCloseModal = this.handleCloseModal.bind(this);
         this.toggleFavorite = this.toggleFavorite.bind(this);
     }
 
@@ -38,7 +38,8 @@ class Popup extends Component {
             <div>
                 <i onClick={this.handleOpenModal} className="material-icons icon">info</i>
                 <Modal
-                	isOpen={this.state.showModal}
+                    isOpen={this.state.showModal}
+                    contentLabel="onRequestClose Example"
                     onRequestClose={this.handleCloseModal} 
 				>
                     

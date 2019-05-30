@@ -26,13 +26,15 @@ class ArtPiece extends Component{
         let favIcon = pieceIndex === -1 ? "add_circle" : "remove_circle" 
         return(
             <div className = "frame">
-                <div  >      
+                <div >      
                     <img className= "art-image" src={this.props.piece.imageURL} alt="loading" />  
-                </div>
+                
                 <h6 className="title-under">{this.props.piece.title}</h6>
+                
                 <div className = "buttons">
                     <i onClick={this.handleFavorite} className="material-icons icon ">{favIcon}</i>
                     <Popup piece={this.props.piece} favorites={this.props.favorites} handleFavoriteToggle={this.props.handleFavoriteToggle}/>
+                </div>
                 </div>
             </div>
         )
