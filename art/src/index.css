@@ -42,16 +42,22 @@ code {
 .art-container {
   text-align: center;
   display: grid;
+  margin-right: 25px;
+  margin-left: 25px;
   grid-template-columns: repeat(3, 1fr);  
   grid-auto-rows: min-content;
-  grid-gap: 10px;
+  grid-gap: 20px;
   grid-auto-flow: dense;
 }
 
 .frame{
-  border: 6px solid black;
-  position:relative;
+  /* border: 6px solid black;  */
+  position : relative;
 }
+
+/* .frame-content {
+  position : relative;
+} */
 
 .icon{
   padding-top: 0;
@@ -64,6 +70,7 @@ code {
   object-fit: cover;
   padding-bottom:0;
   border-bottom:0;
+  border: 6px solid black;
 }
 
 .nav{
@@ -82,13 +89,18 @@ code {
 }
 
 .title-under{
+  /* position: absolute;
+  bottom: 0%; */
   margin-bottom: 0;
   padding-bottom: 5px;
 }
 
-.buttons{
-  display: inline;
-}
+/* .artpiece-buttons{
+  position: absolute;
+  top: 0;
+  right: 0;
+} */
+
 
 /* from lifting-state-lab */
 .section-count {
@@ -101,4 +113,3 @@ code {
   margin-left: 0.25em;
   font-weight: bold;
 }
-

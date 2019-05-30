@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import Modal from 'react-modal'
 
 
+
+
 class Popup extends Component {
     constructor(props) {
         super(props)
@@ -25,8 +27,8 @@ class Popup extends Component {
     }
 
     toggleFavorite(){
-        let favorite = !this.state.favorite
-        this.setState({favorite})
+        let favorite = !this.state.favorite;
+        this.setState({favorite});
         this.props.handleFavoriteToggle(this.props.piece);   
     }
 
@@ -36,17 +38,15 @@ class Popup extends Component {
         let favIcon = pieceIndex === -1 ? "add_circle" : "remove_circle" 
         return(
             <div>
-                <i onClick={this.handleOpenModal} className="material-icons icon">info</i>
+                <i onClick={this.handleOpenModal} className="material-icons icon modal-icon">info</i>
                 <Modal
+                    ariaHideApp={false}
                     isOpen={this.state.showModal}
                     contentLabel="onRequestClose Example"
-                    onRequestClose={this.handleCloseModal} 
-				>
-                    
+                    onRequestClose={this.handleCloseModal} >      
                 <h1>{this.props.piece.title}</h1>
                 <h3>{this.props.piece.artistName}</h3>
-                <h3>{this.props.piece.id}</h3>
-                
+                <h3>{this.props.piece.id}</h3>    
                 <i onClick={this.handleCloseModal} className="material-icons">arrow_back</i> 
                 <i onClick={this.toggleFavorite} className="material-icons">{favIcon}</i>   
                 <img className="art-image" src={this.props.piece.imageURL} alt = 'loading' /> 
