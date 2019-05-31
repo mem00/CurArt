@@ -46,7 +46,7 @@ class App extends Component {
       let artistName = data.artistDisplayName;
       let artistDisplayBio = data.artistDisplayBio;
       let title = data.title;
-      let imageURL = data.primaryImageSmall;
+      let imageURL = data.primaryImage;
       let department = data.department;
       let dimensions = data.dimensions;
       let medium = data.medium;

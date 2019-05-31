@@ -22,13 +22,12 @@ class Popup extends Component {
     handleCloseModal(){
         this.setState({showModal : false});
     }
-    //allow add to favorites from app
+    //allow add to favorites from popup
     toggleFavorite(){
         let favorite = !this.state.favorite;
         this.setState({favorite});
         this.props.handleFavoriteToggle(this.props.piece);   
     }
-
 
     render() {
         //display icon based on if piece is in favorites
@@ -46,7 +45,7 @@ class Popup extends Component {
                 <h3>{this.props.piece.artistName}</h3> 
                 <i onClick={this.handleCloseModal} className="material-icons">arrow_back</i> 
                 <i onClick={this.toggleFavorite} className="material-icons">{favIcon}</i>   
-                <img className="art-image" src={this.props.piece.imageURL} alt = 'loading' /> 
+                <img className="art-image-popup" src={this.props.piece.imageURL} alt = 'loading' /> 
                 <h5>{this.props.piece.artistName}</h5>
                 <h5>{this.props.piece.artistDisplayBio}</h5>
                 <h5>{this.props.piece.department}</h5>
@@ -54,6 +53,7 @@ class Popup extends Component {
                 <h5>{this.props.piece.medium}</h5>
                 <h5>{this.props.piece.objectDate}</h5>
                 <h5>{this.props.piece.repository}</h5>
+                <h6>{this.props.piece.id}</h6>
                 </Modal>        
             </div>
 
