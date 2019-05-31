@@ -3,8 +3,9 @@ import ArtPiece from './ArtPiece'
 
 class ArtGallery extends Component{
     render() {
+        //map all art
         let display = this.props.artwork.map((piece, index) => (
-            <ArtPiece className= "piece" key={index}  piece={piece} setCurrentArtwork={this.props.setCurrentArtwork} handleFavoriteToggle={this.props.handleFavoriteToggle} favorites={this.props.favorites}/>
+            <ArtPiece key={index}  piece={piece} setCurrentArtwork={this.props.setCurrentArtwork} handleFavoriteToggle={this.props.handleFavoriteToggle} favorites={this.props.favorites}/>
         ))
         return(
             <div className="art-container">

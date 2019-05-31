@@ -51,13 +51,8 @@ code {
 }
 
 .frame{
-  /* border: 6px solid black;  */
   position : relative;
 }
-
-/* .frame-content {
-  position : relative;
-} */
 
 .icon{
   padding-top: 0;
@@ -89,17 +84,9 @@ code {
 }
 
 .title-under{
-  /* position: absolute;
-  bottom: 0%; */
   margin-bottom: 0;
   padding-bottom: 5px;
 }
-
-/* .artpiece-buttons{
-  position: absolute;
-  top: 0;
-  right: 0;
-} */
 
 
 /* from lifting-state-lab */

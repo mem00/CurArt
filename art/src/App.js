@@ -37,8 +37,10 @@ class App extends Component {
     let artwork = [...this.state.artwork]
     artwork = []
     for(let i = 0; i < NUMBER_OF_PIECES; i++) {  
+      //random
       let randomIndex = Math.floor(Math.random() * ArtworkIDS.length)
       let response = await axios.get(artworkURL + "/" + ArtworkIDS[randomIndex])
+      //creat artPiece object
       let data = response.data;
       let id = data.objectID;
       let artistName = data.artistDisplayName;
@@ -59,6 +61,7 @@ class App extends Component {
   }
 
   handleFavoriteToggle(piece) {
+    //inspired by film app
     let favorites = [...this.state.favorites];
     let pieceIndex = favorites.indexOf(piece);
     let favoriteCount = this.state.favoriteCount;
@@ -75,13 +78,14 @@ class App extends Component {
   }
 
   setSearch(search) {
+    //get copy
     let artworkUnfiltered = [...this.state.artwork]
     let favoritesUnfiltered = [...this.state.favorites]
-    const artworkFiltered= artworkUnfiltered.filter((art)=>{
+    const artworkFiltered = artworkUnfiltered.filter((art)=>{
       return(art.title.toLowerCase().includes(search.toLowerCase()))
     })
 
-    const favoritesFiltered= favoritesUnfiltered.filter((art)=>{
+    const favoritesFiltered = favoritesUnfiltered.filter((art)=>{
       return(art.title.toLowerCase().includes(search.toLowerCase()))
     })
 
@@ -90,6 +94,7 @@ class App extends Component {
     })
   }
 
+  //handle home and favorite tabs
   handleClick(event){
     if(event.currentTarget.innerHTML === "Home") {
       this.setState({filter: "all"})
@@ -99,12 +104,15 @@ class App extends Component {
   }
 
   render() {
+    //style current tab
     const styleHome = {
       color: this.state.filter==="all" ? "yellow" : "white"
     }
     const styleFavorites = {
       color: this.state.filter==="favorites" ? "yellow" : "white"
     }
+
+    //display all or favorites
     let display
     let art = this.state.filter === "all" ? this.state.artworkFiltered : this.state.favoritesFiltered
     if(art.length === 0) {
@@ -114,6 +122,7 @@ class App extends Component {
       display = <ArtGallery artwork={art}  handleFavoriteToggle={this.handleFavoriteToggle} favorites={this.state.favorites}/>
     } 
 
+    //dont display search bar untill all paintings load
     let search = this.state.artwork.length === 15 ? <SearchBar setSearch={this.setSearch} /> : <div></div>
     return (
       <div>
@@ -122,7 +131,6 @@ class App extends Component {
           <ul className = "nav">
             <li onClick = {this.handleClick} style={styleHome}>Home</li>
             <li onClick = {this.handleClick} style={styleFavorites}>Favorites<span className="section-count">{this.state.favoriteCount}</span></li>
-            <li><i className="material-icons">face</i></li>
           </ul>
           {search}
           <button onClick={this.getNewArt}>Get New Art</button>

@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 import Modal from 'react-modal'
 
-
-
-
 class Popup extends Component {
     constructor(props) {
         super(props)
@@ -25,7 +22,7 @@ class Popup extends Component {
     handleCloseModal(){
         this.setState({showModal : false});
     }
-
+    //allow add to favorites from app
     toggleFavorite(){
         let favorite = !this.state.favorite;
         this.setState({favorite});
@@ -34,6 +31,7 @@ class Popup extends Component {
 
 
     render() {
+        //display icon based on if piece is in favorites
         let pieceIndex = this.props.favorites.indexOf(this.props.piece);
         let favIcon = pieceIndex === -1 ? "add_circle" : "remove_circle" 
         return(
@@ -45,20 +43,18 @@ class Popup extends Component {
                     contentLabel="onRequestClose Example"
                     onRequestClose={this.handleCloseModal} >      
                 <h1>{this.props.piece.title}</h1>
-                <h3>{this.props.piece.artistName}</h3>
-                <h3>{this.props.piece.id}</h3>    
+                <h3>{this.props.piece.artistName}</h3> 
                 <i onClick={this.handleCloseModal} className="material-icons">arrow_back</i> 
                 <i onClick={this.toggleFavorite} className="material-icons">{favIcon}</i>   
                 <img className="art-image" src={this.props.piece.imageURL} alt = 'loading' /> 
-                <h6>{this.props.piece.artistName}</h6>
-                <h6>{this.props.piece.artistDisplayBio}</h6>
-                <h6>{this.props.piece.department}</h6>
-                <h6>{this.props.piece.dimensions}</h6>
-                <h6>{this.props.piece.medium}</h6>
-                <h6>{this.props.piece.objectDate}</h6>
-                <h6>{this.props.piece.repository}</h6>
-                </Modal>
-                
+                <h5>{this.props.piece.artistName}</h5>
+                <h5>{this.props.piece.artistDisplayBio}</h5>
+                <h5>{this.props.piece.department}</h5>
+                <h5>{this.props.piece.dimensions}</h5>
+                <h5>{this.props.piece.medium}</h5>
+                <h5>{this.props.piece.objectDate}</h5>
+                <h5>{this.props.piece.repository}</h5>
+                </Modal>        
             </div>
 
         )

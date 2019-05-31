@@ -7,12 +7,7 @@ class ArtPiece extends Component{
         this.state=({
             favorite: false
         })
-        this.handleInfo = this.handleInfo.bind(this);
         this.handleFavorite = this.handleFavorite.bind(this);
-    }
-
-    handleInfo() {
-        this.props.setCurrentArtwork(this.props.piece);
     }
 
     handleFavorite() {
@@ -22,6 +17,7 @@ class ArtPiece extends Component{
     }
 
     render() {
+        //which favicon to display
         let pieceIndex = this.props.favorites.indexOf(this.props.piece);
         let favIcon = pieceIndex === -1 ? "add_circle" : "remove_circle" 
         return(
